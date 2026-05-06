@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50: oklch(0.97 0.01 220);
+  --color-primary-100: oklch(0.92 0.03 220);
+  --color-primary-200: oklch(0.85 0.06 220);
+  --color-primary-300: oklch(0.75 0.1 220);
+  --color-primary-400: oklch(0.65 0.15 220);
+  --color-primary-500: oklch(0.55 0.18 220);
+  --color-primary-600: oklch(0.45 0.15 220);
+  --color-primary-700: oklch(0.35 0.12 220);
+  --color-primary-800: oklch(0.25 0.08 220);
+  --color-primary-900: oklch(0.15 0.05 220);
+  
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  background-color: oklch(0.98 0 0);
+  color: oklch(0.2 0.02 220);
+}
+
+.dark {
+  background-color: oklch(0.15 0.02 220);
+  color: oklch(0.95 0.01 220);
+}
+
+@layer base {
+  body {
+    @apply antialiased selection:bg-primary-200 selection:text-primary-900;
+  }
+}
+
+/* Custom Utilities */
+.glass {
+  @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
+}
+
+.dark .glass {
+  @apply bg-black/40 backdrop-blur-md border border-white/10 shadow-2xl;
+}
+
+.kanban-column {
+  @apply bg-slate-50/50 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col gap-4 min-h-[500px];
+}
+
+.task-card {
+  @apply bg-white dark:bg-slate-800 p-4 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all cursor-pointer;
+}
