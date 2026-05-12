@@ -121,57 +121,59 @@ export default function ProjectDetail() {
   ];
 
   return (
-    <div className="h-[calc(100vh-64px)] flex flex-col">
-      <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-8 py-6">
-        <div className="flex items-center gap-4 mb-4">
-          <Link to="/" className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors">
-            <ChevronLeft className="w-5 h-5" />
-          </Link>
+    <div className="h-[calc(100vh-80px)] flex flex-col">
+      <div className="bg-surface px-12 py-10">
+        <div className="flex flex-col md:flex-row md:items-end gap-6">
           <div className="flex flex-col">
-            <div className="flex items-center gap-3">
-              <h1 className="text-2xl font-bold">{project.name}</h1>
-              <span className="bg-primary-50 dark:bg-primary-900/20 text-primary-600 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Active</span>
+            <div className="flex items-center gap-4 mb-3">
+              <Link to="/" className="p-2.5 bg-surface-low hover:bg-surface-high rounded-xl transition-all hover:-translate-x-1">
+                <ChevronLeft className="w-5 h-5" />
+              </Link>
+              <div className="flex items-center gap-3">
+                <h1 className="text-4xl font-extrabold tracking-tighter">{project.name}</h1>
+                <span className="bg-primary-50 dark:bg-primary-900/20 text-primary-600 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest ring-1 ring-primary-100">Project Active</span>
+              </div>
             </div>
-            <p className="text-slate-500 text-sm mt-0.5">{project.description || 'No description'}</p>
+            <p className="text-slate-500 text-lg font-medium max-w-2xl">{project.description || 'This project is currently being curated.'}</p>
           </div>
           
-          <div className="flex items-center gap-3 ml-auto">
-            <div className="flex -space-x-3 items-center mr-4">
+          <div className="flex items-center gap-5 ml-auto">
+            <div className="flex -space-x-3 items-center mr-6">
                {[1,2,3,4].map(n => (
-                  <div key={n} className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900 bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-xs font-bold ring-1 ring-slate-200 dark:ring-slate-800">
+                  <div key={n} className="w-10 h-10 rounded-full border-[3px] border-white dark:border-slate-900 bg-surface-high flex items-center justify-center text-xs font-black text-slate-600 shadow-sm">
                     {String.fromCharCode(64 + n)}
                   </div>
                 ))}
-                <button className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900 bg-primary-600 text-white flex items-center justify-center text-xs font-bold hover:bg-primary-700 transition-colors">
-                  <Plus className="w-4 h-4" />
+                <button className="w-10 h-10 rounded-full border-[3px] border-white dark:border-slate-900 btn-primary-gradient flex items-center justify-center text-xs font-bold hover:scale-110 transition-transform shadow-lg shadow-primary-500/20">
+                  <Plus className="w-5 h-5" />
                 </button>
             </div>
-            <button className="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-xl text-sm font-medium hover:bg-slate-200 transition-colors">
+            <button className="flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-800 rounded-2xl text-sm font-bold shadow-sm hover:shadow-md transition-all">
               <Filter className="w-4 h-4" />
-              Filter
+              Filter Board
             </button>
-            <button className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors text-slate-500">
+            <button className="p-3 bg-white dark:bg-slate-800 rounded-2xl shadow-sm hover:shadow-md transition-all text-slate-500">
               <MoreHorizontal className="w-5 h-5" />
             </button>
           </div>
         </div>
       </div>
 
-      <div className="flex-1 overflow-x-auto bg-slate-50 dark:bg-slate-950 p-8">
-        <div className="flex gap-8 h-full min-w-max">
+      <div className="flex-1 overflow-x-auto bg-surface-low px-12 py-8">
+        <div className="flex gap-10 h-full min-w-max">
           {columns.map(column => (
-            <div key={column.id} className="w-96 flex flex-col h-full">
-              <div className="flex items-center justify-between mb-4 px-2">
-                <div className="flex items-center gap-2">
-                  <div className={`w-2.5 h-2.5 rounded-full ${column.color}`} />
-                  <h3 className="font-bold text-slate-700 dark:text-slate-300">{column.label}</h3>
-                  <span className="text-xs font-bold text-slate-400 bg-slate-200/50 dark:bg-slate-800 px-2 py-0.5 rounded-md">
+            <div key={column.id} className="w-[400px] flex flex-col h-full">
+              <div className="flex items-center justify-between mb-6 px-4">
+                <div className="flex items-center gap-3">
+                  <div className={`w-3 h-3 rounded-full ${column.color.replace('bg-', 'bg-opacity-80 bg-')}`} />
+                  <h3 className="font-display font-extrabold text-xl tracking-tight text-slate-800 dark:text-slate-200">{column.label}</h3>
+                  <span className="text-[10px] font-black text-slate-400 bg-white/50 dark:bg-slate-800 px-3 py-1 rounded-full shadow-sm">
                     {project.tasks.filter(t => t.status === column.id).length}
                   </span>
                 </div>
                 <button 
                   onClick={() => setIsAddingTask(column.id)}
-                  className="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg text-slate-500 transition-colors"
+                  className="p-2 bg-white/50 dark:bg-slate-800 rounded-xl text-slate-500 hover:text-primary-600 hover:bg-white transition-all shadow-sm"
                 >
                   <Plus className="w-4 h-4" />
                 </button>
@@ -181,9 +183,9 @@ export default function ProjectDetail() {
                 <AnimatePresence>
                   {isAddingTask === column.id && (
                     <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="bg-white dark:bg-slate-800 p-4 rounded-xl border-2 border-primary-500/30 shadow-lg"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-2xl ring-2 ring-primary-500/20"
                     >
                       <input
                         autoFocus
@@ -191,12 +193,12 @@ export default function ProjectDetail() {
                         onChange={(e) => setNewTaskTitle(e.target.value)}
                         onKeyDown={(e) => e.key === 'Enter' && handleAddTask(column.id)}
                         onBlur={() => !newTaskTitle && setIsAddingTask(null)}
-                        className="w-full bg-transparent outline-none text-sm font-medium mb-3"
-                        placeholder="What needs to be done?"
+                        className="w-full bg-transparent outline-none text-base font-bold mb-4 placeholder:text-slate-300"
+                        placeholder="Define a new task..."
                       />
-                      <div className="flex justify-end gap-2">
-                        <button onClick={() => setIsAddingTask(null)} className="text-xs font-bold text-slate-500 hover:text-slate-700 px-3 py-1.5">Cancel</button>
-                        <button onClick={() => handleAddTask(column.id)} className="bg-primary-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-primary-700 transition-colors">Add Task</button>
+                      <div className="flex justify-end gap-3">
+                        <button onClick={() => setIsAddingTask(null)} className="text-xs font-bold text-slate-400 hover:text-slate-600 px-4 py-2 transition-colors">Cancel</button>
+                        <button onClick={() => handleAddTask(column.id)} className="btn-primary-gradient text-xs font-black px-5 py-2.5 rounded-xl">Add Task</button>
                       </div>
                     </motion.div>
                   )}
@@ -208,43 +210,41 @@ export default function ProjectDetail() {
                     <motion.div
                       key={task.id}
                       layoutId={String(task.id)}
-                      className="task-card group"
-                      whileHover={{ y: -2, boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)' }}
+                      className="task-card group relative"
                     >
-                      <div className="flex justify-between items-start mb-2">
-                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-tighter ${
-                          task.priority === 'HIGH' ? 'bg-rose-50 text-rose-600' : 
-                          task.priority === 'MEDIUM' ? 'bg-amber-50 text-amber-600' : 'bg-blue-50 text-blue-600'
+                      <div className="flex justify-between items-start mb-3">
+                        <span className={`text-[9px] font-black px-2.5 py-1 rounded-full uppercase tracking-widest ${
+                          task.priority === 'HIGH' ? 'bg-red-50 text-red-600 ring-1 ring-red-100' : 
+                          task.priority === 'MEDIUM' ? 'bg-orange-50 text-tertiary-500 ring-1 ring-orange-100' : 'bg-primary-50 text-primary-600 ring-1 ring-primary-100'
                         }`}>
-                          {task.priority}
+                          {task.priority} Priority
                         </span>
-                        <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                           <button 
-                            onClick={() => handleDeleteTask(task.id)}
-                            className="p-1 text-slate-400 hover:text-red-600"
-                           >
-                            <Trash2 className="w-3.5 h-3.5" />
-                           </button>
+                        <button 
+                          onClick={() => handleDeleteTask(task.id)}
+                          className="p-1.5 text-slate-300 hover:text-red-600 transition-colors opacity-0 group-hover:opacity-100"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                      <h4 className="text-lg font-bold mb-3 group-hover:text-primary-600 transition-colors leading-snug">{task.title}</h4>
+                      
+                      <div className="flex items-center gap-4 mt-6 pt-5 border-t border-surface-low">
+                        <div className="flex items-center gap-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                          <Clock className="w-3.5 h-3.5" />
+                          Curated Oct 12
+                        </div>
+                        <div className="ml-auto flex -space-x-2">
+                           <div className="w-7 h-7 rounded-full border-2 border-white dark:border-slate-800 bg-surface-high flex items-center justify-center text-[8px] font-black text-slate-500">JD</div>
+                           <div className="w-7 h-7 rounded-full border-2 border-white dark:border-slate-800 btn-primary-gradient flex items-center justify-center text-[8px] font-black">+2</div>
                         </div>
                       </div>
-                      <h4 className="text-sm font-semibold mb-2 group-hover:text-primary-600 transition-colors">{task.title}</h4>
                       
-                      <div className="flex items-center gap-3 mt-4 pt-4 border-t border-slate-50 dark:border-slate-700/50">
-                        <div className="flex items-center gap-1 text-[10px] font-bold text-slate-400">
-                          <Clock className="w-3 h-3" />
-                          Oct 12
-                        </div>
-                        <div className="ml-auto flex items-center gap-1">
-                           <div className="w-5 h-5 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-[8px] font-bold">JD</div>
-                        </div>
-                      </div>
-                      
-                      <div className="flex gap-1 mt-4">
+                      <div className="flex gap-2 mt-5 opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">
                         {columns.filter(c => c.id !== column.id).map(c => (
                           <button
                             key={c.id}
                             onClick={() => updateTaskStatus(task.id, c.id)}
-                            className="flex-1 py-1 px-2 rounded bg-slate-100 dark:bg-slate-800 text-[9px] font-bold text-slate-500 hover:bg-primary-50 hover:text-primary-600 transition-colors"
+                            className="flex-1 py-2 px-3 rounded-xl bg-surface-low text-[9px] font-black text-slate-500 hover:bg-primary-500 hover:text-white transition-all uppercase tracking-widest"
                           >
                             Move to {c.label.split(' ')[0]}
                           </button>
@@ -256,11 +256,11 @@ export default function ProjectDetail() {
             </div>
           ))}
           
-          <button className="w-96 h-full border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-xl flex flex-col items-center justify-center text-slate-400 hover:bg-slate-100/50 dark:hover:bg-slate-900/50 hover:text-primary-600 transition-all group min-h-[500px]">
-            <div className="bg-white dark:bg-slate-800 p-3 rounded-2xl mb-4 shadow-sm group-hover:scale-110 transition-transform">
-              <Plus className="w-6 h-6" />
+          <button className="w-[400px] h-full border-2 border-dashed border-surface-high rounded-[2rem] flex flex-col items-center justify-center text-slate-300 hover:bg-white hover:border-primary-500/30 hover:text-primary-600 transition-all group min-h-[600px] shadow-sm hover:shadow-xl">
+            <div className="bg-white dark:bg-slate-800 p-4 rounded-2xl mb-5 shadow-sm group-hover:scale-110 transition-transform duration-500">
+              <Plus className="w-8 h-8" />
             </div>
-            <span className="font-bold">Add New Column</span>
+            <span className="font-display font-extrabold text-lg">Add Collection</span>
           </button>
         </div>
       </div>

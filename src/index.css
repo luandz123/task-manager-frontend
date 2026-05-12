@@ -1,49 +1,86 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
 
 @theme {
-  --color-primary-50: oklch(0.97 0.01 220);
-  --color-primary-100: oklch(0.92 0.03 220);
-  --color-primary-200: oklch(0.85 0.06 220);
-  --color-primary-300: oklch(0.75 0.1 220);
-  --color-primary-400: oklch(0.65 0.15 220);
-  --color-primary-500: oklch(0.55 0.18 220);
-  --color-primary-600: oklch(0.45 0.15 220);
-  --color-primary-700: oklch(0.35 0.12 220);
-  --color-primary-800: oklch(0.25 0.08 220);
-  --color-primary-900: oklch(0.15 0.05 220);
+  /* Editorial Color Palette */
+  --color-primary-50: #eeefff;
+  --color-primary-100: #dbe1ff;
+  --color-primary-200: #b4c5ff;
+  --color-primary-300: #73a1ff;
+  --color-primary-400: #2563eb;
+  --color-primary-500: #004ac6; /* Main Primary */
+  --color-primary-600: #003ea8;
+  --color-primary-700: #002d7a;
   
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --color-secondary-500: #006c49; /* Success/Secondary */
+  --color-tertiary-500: #784b00; /* Warning/Emphasis */
+
+  /* Surface Levels (The "No-Line" Philosophy) */
+  --color-surface: #faf8ff;
+  --color-surface-low: #f3f3fe;
+  --color-surface-lowest: #ffffff;
+  --color-surface-high: #e7e7f3;
+  --color-surface-highest: #e1e2ed;
+
+  /* Typography */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Manrope", sans-serif;
 }
 
 :root {
-  background-color: oklch(0.98 0 0);
-  color: oklch(0.2 0.02 220);
+  background-color: var(--color-surface);
+  color: #191b23;
+  font-family: var(--font-sans);
 }
 
 .dark {
-  background-color: oklch(0.15 0.02 220);
-  color: oklch(0.95 0.01 220);
+  --color-surface: #191b23;
+  --color-surface-low: #2e3039;
+  --color-surface-lowest: #121212;
+  background-color: var(--color-surface);
+  color: #faf8ff;
 }
 
 @layer base {
   body {
-    @apply antialiased selection:bg-primary-200 selection:text-primary-900;
+    @apply antialiased selection:bg-primary-100 selection:text-primary-700;
+  }
+  
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
   }
 }
 
-/* Custom Utilities */
+/* Custom Utilities based on "Digital Curator" rules */
 .glass {
-  @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
+  @apply bg-white/60 backdrop-blur-xl border border-white/20 shadow-sm;
 }
 
 .dark .glass {
-  @apply bg-black/40 backdrop-blur-md border border-white/10 shadow-2xl;
+  @apply bg-black/40 backdrop-blur-xl border border-white/10 shadow-lg;
+}
+
+/* The Signature Gradient */
+.btn-primary-gradient {
+  background: linear-gradient(135deg, var(--color-primary-500) 0%, var(--color-primary-400) 100%);
+  @apply text-white shadow-md hover:shadow-lg transition-all duration-300;
+}
+
+/* Surface-based containers (No Borders) */
+.editorial-card {
+  @apply bg-surface-lowest rounded-2xl p-6 transition-all duration-300;
+  box-shadow: 0 10px 30px rgba(25, 27, 35, 0.04);
 }
 
 .kanban-column {
-  @apply bg-slate-50/50 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col gap-4 min-h-[500px];
+  @apply bg-surface-low rounded-3xl p-5 flex flex-col gap-4 min-h-[600px];
 }
 
 .task-card {
-  @apply bg-white dark:bg-slate-800 p-4 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all cursor-pointer;
+  @apply bg-surface-lowest p-5 rounded-xl transition-all duration-300 cursor-pointer hover:-translate-y-1;
+  box-shadow: 0 4px 12px rgba(25, 27, 35, 0.03);
+}
+
+.task-card:hover {
+  box-shadow: 0 20px 40px rgba(25, 27, 35, 0.06);
 }

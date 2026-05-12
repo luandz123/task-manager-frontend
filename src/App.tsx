@@ -23,7 +23,7 @@ const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
 
 const AppRoutes = () => {
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-primary-100 selection:text-primary-900">
+    <div className="min-h-screen bg-surface text-slate-900 dark:text-slate-100 selection:bg-primary-100 selection:text-primary-700">
       <Header />
       <main>
         <Routes>

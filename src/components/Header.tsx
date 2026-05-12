@@ -15,48 +15,48 @@ export default function Header() {
   if (!user) return null;
 
   return (
-    <header className="sticky top-0 z-50 glass border-b">
+    <header className="sticky top-0 z-50 glass">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex items-center gap-8">
-            <Link to="/" className="flex items-center gap-2 group">
-              <div className="bg-primary-600 p-2 rounded-lg group-hover:rotate-6 transition-transform">
+        <div className="flex justify-between items-center h-20">
+          <div className="flex items-center gap-10">
+            <Link to="/" className="flex items-center gap-3 group">
+              <div className="btn-primary-gradient p-2.5 rounded-xl group-hover:rotate-6 transition-transform duration-300">
                 <Layout className="w-5 h-5 text-white" />
               </div>
-              <span className="font-bold text-xl tracking-tight">DevTask</span>
+              <span className="font-display font-extrabold text-2xl tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-primary-400">DevTask</span>
             </Link>
 
-            <nav className="hidden md:flex items-center gap-6">
-              <Link to="/" className="text-sm font-medium hover:text-primary-600 transition-colors">Dashboard</Link>
-              <Link to="/projects" className="text-sm font-medium hover:text-primary-600 transition-colors">Projects</Link>
+            <nav className="hidden md:flex items-center gap-8">
+              <Link to="/" className="text-sm font-semibold text-slate-600 hover:text-primary-600 transition-colors">Dashboard</Link>
+              <Link to="/projects" className="text-sm font-semibold text-slate-600 hover:text-primary-600 transition-colors">Projects</Link>
             </nav>
           </div>
 
-          <div className="flex items-center gap-4">
-            <div className="relative hidden sm:block">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <div className="flex items-center gap-5">
+            <div className="relative hidden lg:block">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input 
                 type="text" 
-                placeholder="Quick search..." 
-                className="bg-slate-100 dark:bg-slate-800 border-none rounded-full py-1.5 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary-500 w-64"
+                placeholder="Search anything..." 
+                className="bg-surface-low border-none rounded-2xl py-2.5 pl-11 pr-4 text-sm focus:ring-2 focus:ring-primary-500 w-72 transition-all"
               />
             </div>
 
-            <button className="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors relative">
+            <button className="p-2.5 text-slate-500 hover:bg-surface-low rounded-xl transition-colors relative">
               <Bell className="w-5 h-5" />
-              <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-900"></span>
+              <span className="absolute top-3 right-3 w-2 h-2 bg-secondary-500 rounded-full border-2 border-white dark:border-slate-900"></span>
             </button>
 
-            <div className="h-8 w-px bg-slate-200 dark:bg-slate-700 mx-2"></div>
+            <div className="h-8 w-px bg-surface-high mx-2"></div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               <div className="flex flex-col items-end hidden sm:flex">
-                <span className="text-sm font-semibold">{user.name}</span>
-                <span className="text-xs text-slate-500 capitalize">Team Member</span>
+                <span className="text-sm font-bold leading-tight">{user.name}</span>
+                <span className="text-[10px] font-bold text-primary-500 uppercase tracking-widest">Admin Access</span>
               </div>
               <button 
                 onClick={handleLogout}
-                className="bg-slate-100 dark:bg-slate-800 p-2 rounded-lg hover:text-red-600 transition-all"
+                className="bg-surface-low p-2.5 rounded-xl hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all"
                 title="Logout"
               >
                 <LogOut className="w-5 h-5" />
