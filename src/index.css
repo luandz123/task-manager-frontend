@@ -15,12 +15,17 @@
   --color-secondary-500: #006c49; /* Success/Secondary */
   --color-tertiary-500: #784b00; /* Warning/Emphasis */
 
-  /* Surface Levels (The "No-Line" Philosophy) */
+  /* Surface Levels */
   --color-surface: #faf8ff;
   --color-surface-low: #f3f3fe;
   --color-surface-lowest: #ffffff;
   --color-surface-high: #e7e7f3;
   --color-surface-highest: #e1e2ed;
+
+  /* Enhanced Typography Colors for Readability */
+  --color-text-main: #111827; /* Darker than before */
+  --color-text-muted: #4b5563; /* Accessible gray */
+  --color-text-faint: #6b7280; /* Still readable but secondary */
 
   /* Typography */
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -29,47 +34,53 @@
 
 :root {
   background-color: var(--color-surface);
-  color: #191b23;
+  color: var(--color-text-main);
   font-family: var(--font-sans);
+  -webkit-font-smoothing: auto; /* Revert antialiased which can cause blurring */
+  -moz-osx-font-smoothing: auto;
 }
 
 .dark {
-  --color-surface: #191b23;
-  --color-surface-low: #2e3039;
-  --color-surface-lowest: #121212;
+  --color-surface: #111827;
+  --color-surface-low: #1f2937;
+  --color-surface-lowest: #030712;
+  --color-text-main: #f9fafb;
+  --color-text-muted: #d1d5db;
+  --color-text-faint: #9ca3af;
   background-color: var(--color-surface);
-  color: #faf8ff;
+  color: var(--color-text-main);
 }
 
 @layer base {
   body {
-    @apply antialiased selection:bg-primary-100 selection:text-primary-700;
+    /* Removed antialiased to prevent font blurring on some displays */
+    @apply selection:bg-primary-100 selection:text-primary-700;
   }
   
   h1, h2, h3, h4 {
-    @apply font-display tracking-tight;
+    @apply font-display tracking-tight font-bold;
   }
 }
 
-/* Custom Utilities based on "Digital Curator" rules */
+/* Custom Utilities */
 .glass {
-  @apply bg-white/60 backdrop-blur-xl border border-white/20 shadow-sm;
+  @apply bg-white/70 backdrop-blur-xl border border-white/30 shadow-sm;
 }
 
 .dark .glass {
-  @apply bg-black/40 backdrop-blur-xl border border-white/10 shadow-lg;
+  @apply bg-slate-900/50 backdrop-blur-xl border border-white/10 shadow-lg;
 }
 
-/* The Signature Gradient */
+/* Signature Gradient */
 .btn-primary-gradient {
   background: linear-gradient(135deg, var(--color-primary-500) 0%, var(--color-primary-400) 100%);
   @apply text-white shadow-md hover:shadow-lg transition-all duration-300;
 }
 
-/* Surface-based containers (No Borders) */
+/* Surface-based containers */
 .editorial-card {
   @apply bg-surface-lowest rounded-2xl p-6 transition-all duration-300;
-  box-shadow: 0 10px 30px rgba(25, 27, 35, 0.04);
+  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.04);
 }
 
 .kanban-column {
@@ -78,9 +89,10 @@
 
 .task-card {
   @apply bg-surface-lowest p-5 rounded-xl transition-all duration-300 cursor-pointer hover:-translate-y-1;
-  box-shadow: 0 4px 12px rgba(25, 27, 35, 0.03);
+  box-shadow: 0 4px 12px rgba(17, 24, 39, 0.03);
 }
 
 .task-card:hover {
-  box-shadow: 0 20px 40px rgba(25, 27, 35, 0.06);
+  box-shadow: 0 20px 40px rgba(17, 24, 39, 0.06);
 }
+

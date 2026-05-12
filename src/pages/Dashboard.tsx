@@ -85,19 +85,19 @@ export default function Dashboard() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
             >
-              <h1 className="text-6xl font-extrabold tracking-tighter text-slate-900 dark:text-white mb-4">
+              <h1 className="text-6xl font-extrabold tracking-tighter text-text-main mb-4">
                 Workspace<span className="text-primary-500">.</span>
               </h1>
-              <p className="text-slate-500 text-xl font-medium max-w-xl leading-relaxed">
+              <p className="text-text-muted text-xl font-medium max-w-xl leading-relaxed">
                 Your curated collection of active projects and collaborative tasks, organized for maximum focus.
               </p>
             </motion.div>
           </header>
 
           <div className="flex items-center justify-between mb-10">
-            <h2 className="font-display font-extrabold text-2xl tracking-tight">Active Feed</h2>
+            <h2 className="font-display font-extrabold text-2xl tracking-tight text-text-main">Active Feed</h2>
             <div className="flex items-center gap-3">
-              <span className="text-xs font-black text-slate-400 uppercase tracking-widest">Sort by: Recent</span>
+              <span className="text-xs font-black text-text-muted uppercase tracking-widest">Sort by: Recent</span>
               <div className="w-10 h-px bg-surface-high"></div>
               <button
                 onClick={() => setIsModalOpen(true)}
@@ -119,8 +119,8 @@ export default function Dashboard() {
               <div className="bg-white dark:bg-slate-900 w-24 h-24 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-sm">
                 <Folder className="w-12 h-12 text-slate-200" />
               </div>
-              <h3 className="text-3xl font-extrabold tracking-tight mb-4">Empty Workspace</h3>
-              <p className="text-slate-500 mb-10 max-w-sm mx-auto text-lg">Your vertical feed is waiting for its first curated entry. Start a project to begin.</p>
+              <h3 className="text-3xl font-extrabold tracking-tight mb-4 text-text-main">Empty Workspace</h3>
+              <p className="text-text-muted mb-10 max-w-sm mx-auto text-lg">Your vertical feed is waiting for its first curated entry. Start a project to begin.</p>
               <button 
                 onClick={() => setIsModalOpen(true)}
                 className="btn-primary-gradient px-10 py-4 rounded-2xl font-black text-lg"
@@ -155,10 +155,10 @@ export default function Dashboard() {
                             <span className="w-1 h-1 bg-slate-200 rounded-full"></span>
                             <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{new Date(project.createdAt).toLocaleDateString(undefined, { month: 'long', day: 'numeric' })}</span>
                           </div>
-                          <h3 className="text-3xl font-extrabold group-hover:text-primary-600 transition-colors tracking-tighter mb-3 leading-none">
+                          <h3 className="text-3xl font-extrabold group-hover:text-primary-600 transition-colors tracking-tighter mb-3 leading-none text-text-main">
                             {project.name}
                           </h3>
-                          <p className="text-slate-500 text-lg font-medium line-clamp-1 group-hover:text-slate-700 transition-colors">
+                          <p className="text-text-muted text-lg font-medium line-clamp-1 group-hover:text-text-main transition-colors">
                             {project.description || 'This project represents a curated stream of tasks and collaborative milestones.'}
                           </p>
                         </div>
@@ -166,8 +166,8 @@ export default function Dashboard() {
                         {/* Stats & Actions */}
                         <div className="flex items-center gap-8 md:pl-8 md:border-l border-surface-low">
                           <div className="text-center">
-                            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Tasks</p>
-                            <p className="text-2xl font-black">12</p>
+                            <p className="text-[10px] font-black text-text-faint uppercase tracking-widest mb-1">Tasks</p>
+                            <p className="text-2xl font-black text-text-main">12</p>
                           </div>
                           <div className="flex -space-x-3">
                             {[1,2,3].map(n => (
@@ -208,8 +208,8 @@ export default function Dashboard() {
                       <stat.icon className="w-6 h-6" />
                     </div>
                     <div>
-                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.15em] mb-0.5">{stat.label}</p>
-                      <p className="text-xl font-black">{stat.value}</p>
+                      <p className="text-[10px] font-black text-text-faint uppercase tracking-[0.15em] mb-0.5">{stat.label}</p>
+                      <p className="text-xl font-black text-text-main">{stat.value}</p>
                     </div>
                   </div>
                 ))}

@@ -27,8 +27,8 @@ export default function Header() {
             </Link>
 
             <nav className="hidden md:flex items-center gap-8">
-              <Link to="/" className="text-sm font-semibold text-slate-600 hover:text-primary-600 transition-colors">Dashboard</Link>
-              <Link to="/projects" className="text-sm font-semibold text-slate-600 hover:text-primary-600 transition-colors">Projects</Link>
+              <Link to="/" className="text-sm font-semibold text-text-muted hover:text-primary-600 transition-colors">Dashboard</Link>
+              <Link to="/projects" className="text-sm font-semibold text-text-muted hover:text-primary-600 transition-colors">Projects</Link>
             </nav>
           </div>
 
@@ -38,7 +38,7 @@ export default function Header() {
               <input 
                 type="text" 
                 placeholder="Search anything..." 
-                className="bg-surface-low border-none rounded-2xl py-2.5 pl-11 pr-4 text-sm focus:ring-2 focus:ring-primary-500 w-72 transition-all"
+                className="bg-surface-low border-none rounded-2xl py-2.5 pl-11 pr-4 text-sm focus:ring-2 focus:ring-primary-500 w-72 transition-all placeholder:text-text-faint"
               />
             </div>
 
@@ -51,7 +51,7 @@ export default function Header() {
 
             <div className="flex items-center gap-4">
               <div className="flex flex-col items-end hidden sm:flex">
-                <span className="text-sm font-bold leading-tight">{user.name}</span>
+                <span className="text-sm font-bold leading-tight text-text-main">{user.name}</span>
                 <span className="text-[10px] font-bold text-primary-500 uppercase tracking-widest">Admin Access</span>
               </div>
               <button 

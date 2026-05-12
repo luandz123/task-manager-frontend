@@ -51,10 +51,10 @@ export default function Register() {
           >
             <Layout className="w-10 h-10 text-white" />
           </motion.div>
-          <h1 className="text-5xl font-extrabold tracking-tighter text-slate-900 dark:text-white mb-4 font-display">
+          <h1 className="text-5xl font-extrabold tracking-tighter text-text-main mb-4 font-display">
             New Curator<span className="text-primary-500">.</span>
           </h1>
-          <p className="text-slate-500 text-lg font-medium">Join the editorial network of elite task management.</p>
+          <p className="text-text-muted text-lg font-medium">Join the editorial network of elite task management.</p>
         </div>
 
         <div className="glass p-10 md:p-12 rounded-[3rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)] relative">
@@ -71,14 +71,14 @@ export default function Register() {
             )}
 
             <div className="space-y-3">
-              <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">Full Name</label>
+              <label className="text-[10px] font-black text-text-muted uppercase tracking-[0.2em] ml-1">Full Name</label>
               <div className="relative group">
                 <UserIcon className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300 group-focus-within:text-primary-500 transition-colors" />
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full bg-surface-low border-none rounded-[1.5rem] py-4 pl-14 pr-6 outline-none focus:ring-2 focus:ring-primary-500/20 transition-all font-medium placeholder:text-slate-300"
+                  className="w-full bg-surface-low border-none rounded-[1.5rem] py-4 pl-14 pr-6 outline-none focus:ring-2 focus:ring-primary-500/20 transition-all font-medium placeholder:text-text-faint text-text-main"
                   placeholder="John Doe"
                   required
                 />
@@ -86,14 +86,14 @@ export default function Register() {
             </div>
 
             <div className="space-y-3">
-              <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">Identity</label>
+              <label className="text-[10px] font-black text-text-muted uppercase tracking-[0.2em] ml-1">Identity</label>
               <div className="relative group">
                 <Mail className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300 group-focus-within:text-primary-500 transition-colors" />
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-surface-low border-none rounded-[1.5rem] py-4 pl-14 pr-6 outline-none focus:ring-2 focus:ring-primary-500/20 transition-all font-medium placeholder:text-slate-300"
+                  className="w-full bg-surface-low border-none rounded-[1.5rem] py-4 pl-14 pr-6 outline-none focus:ring-2 focus:ring-primary-500/20 transition-all font-medium placeholder:text-text-faint text-text-main"
                   placeholder="name@agency.com"
                   required
                 />
@@ -101,14 +101,14 @@ export default function Register() {
             </div>
 
             <div className="space-y-3">
-              <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">Security Key</label>
+              <label className="text-[10px] font-black text-text-muted uppercase tracking-[0.2em] ml-1">Security Key</label>
               <div className="relative group">
                 <Lock className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300 group-focus-within:text-primary-500 transition-colors" />
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full bg-surface-low border-none rounded-[1.5rem] py-4 pl-14 pr-6 outline-none focus:ring-2 focus:ring-primary-500/20 transition-all font-medium placeholder:text-slate-300"
+                  className="w-full bg-surface-low border-none rounded-[1.5rem] py-4 pl-14 pr-6 outline-none focus:ring-2 focus:ring-primary-500/20 transition-all font-medium placeholder:text-text-faint text-text-main"
                   placeholder="••••••••"
                   required
                 />
@@ -132,7 +132,7 @@ export default function Register() {
           </form>
 
           <div className="mt-10 pt-8 border-t border-surface-low text-center">
-            <p className="text-slate-400 font-medium">
+            <p className="text-text-muted font-medium">
               Already a curator?{' '}
               <Link to="/login" className="text-primary-600 font-black hover:text-primary-400 transition-colors">Sign in</Link>
             </p>

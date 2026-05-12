@@ -130,11 +130,11 @@ export default function ProjectDetail() {
                 <ChevronLeft className="w-5 h-5" />
               </Link>
               <div className="flex items-center gap-3">
-                <h1 className="text-4xl font-extrabold tracking-tighter">{project.name}</h1>
+                <h1 className="text-4xl font-extrabold tracking-tighter text-text-main">{project.name}</h1>
                 <span className="bg-primary-50 dark:bg-primary-900/20 text-primary-600 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest ring-1 ring-primary-100">Project Active</span>
               </div>
             </div>
-            <p className="text-slate-500 text-lg font-medium max-w-2xl">{project.description || 'This project is currently being curated.'}</p>
+            <p className="text-text-muted text-lg font-medium max-w-2xl">{project.description || 'This project is currently being curated.'}</p>
           </div>
           
           <div className="flex items-center gap-5 ml-auto">
@@ -166,8 +166,8 @@ export default function ProjectDetail() {
               <div className="flex items-center justify-between mb-6 px-4">
                 <div className="flex items-center gap-3">
                   <div className={`w-3 h-3 rounded-full ${column.color.replace('bg-', 'bg-opacity-80 bg-')}`} />
-                  <h3 className="font-display font-extrabold text-xl tracking-tight text-slate-800 dark:text-slate-200">{column.label}</h3>
-                  <span className="text-[10px] font-black text-slate-400 bg-white/50 dark:bg-slate-800 px-3 py-1 rounded-full shadow-sm">
+                  <h3 className="font-display font-extrabold text-xl tracking-tight text-text-main">{column.label}</h3>
+                  <span className="text-[10px] font-black text-text-muted bg-white/50 dark:bg-slate-800 px-3 py-1 rounded-full shadow-sm">
                     {project.tasks.filter(t => t.status === column.id).length}
                   </span>
                 </div>
@@ -193,7 +193,7 @@ export default function ProjectDetail() {
                         onChange={(e) => setNewTaskTitle(e.target.value)}
                         onKeyDown={(e) => e.key === 'Enter' && handleAddTask(column.id)}
                         onBlur={() => !newTaskTitle && setIsAddingTask(null)}
-                        className="w-full bg-transparent outline-none text-base font-bold mb-4 placeholder:text-slate-300"
+                        className="w-full bg-transparent outline-none text-base font-bold mb-4 placeholder:text-text-faint text-text-main"
                         placeholder="Define a new task..."
                       />
                       <div className="flex justify-end gap-3">
@@ -226,10 +226,10 @@ export default function ProjectDetail() {
                           <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
-                      <h4 className="text-lg font-bold mb-3 group-hover:text-primary-600 transition-colors leading-snug">{task.title}</h4>
+                      <h4 className="text-lg font-bold mb-3 group-hover:text-primary-600 transition-colors leading-snug text-text-main">{task.title}</h4>
                       
                       <div className="flex items-center gap-4 mt-6 pt-5 border-t border-surface-low">
-                        <div className="flex items-center gap-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                        <div className="flex items-center gap-1.5 text-[10px] font-bold text-text-faint uppercase tracking-wider">
                           <Clock className="w-3.5 h-3.5" />
                           Curated Oct 12
                         </div>
